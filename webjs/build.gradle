@@ -1,0 +1,56 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+File yoDir = projectDir
+File yoDist = rootProject.webjsDist
+task npm(type: Exec) {
+    group = BasePlugin.BUILD_GROUP
+    workingDir yoDir
+    description = "Installs all Node.js dependencies defined in package.json"
+    commandLine = [ Os.isFamily(Os.FAMILY_WINDOWS) ? "npm.cmd":"npm", "install"]
+    inputs.file new File(yoDir,'package.json')
+    outputs.dir new File( yoDir,'node_modules')
+
+
+}
+
+
+task build(type: Exec, dependsOn :'npm') {
+    group = BasePlugin.BUILD_GROUP
+    workingDir yoDir
+    description = "JS build"
+    commandLine = [ Os.isFamily(Os.FAMILY_WINDOWS) ? "gulp.cmd":"gulp", "build.prod"]
+    inputs.files fileTree(dir: new File(yoDir, 'src'))
+    outputs.dir yoDist
+
+}
+task clean(type: Exec, dependsOn :'npm') {
+    group = BasePlugin.BUILD_GROUP
+    workingDir yoDir
+    description = "Js clean"
+    commandLine = [ Os.isFamily(Os.FAMILY_WINDOWS) ? "gulp.cmd":"gulp", "clean.prod"]
+  //  inputs.files   fileTree(dir:  new File( yoDir,'app'))
+   // outputs.dir yoDist
+
+}
+task test(type: Exec, dependsOn :'npm') {
+    group = "Verification"
+    workingDir yoDir
+    description = "JS test"
+    commandLine = [ Os.isFamily(Os.FAMILY_WINDOWS) ? "gulp.cmd":"gulp", "test"]
+    inputs.files   fileTree(dir:  new File( yoDir,'app'))
+    outputs.dir yoDist
+
+}
+
+task run(type: Exec) {
+    group = BasePlugin.BUILD_GROUP
+    workingDir yoDir
+    description = "JS  Run"
+    commandLine = [ Os.isFamily(Os.FAMILY_WINDOWS) ? "gulp.cmd":"gulp", "serve"]
+   // inputs.files   fileTree(dir:  new File( yoDir,'app'))
+    //outputs.dir yoDist
+
+}
+
+
+

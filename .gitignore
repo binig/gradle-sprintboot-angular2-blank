@@ -1,0 +1,36 @@
+.gradle
+build/
+typings
+# Ignore Gradle GUI config
+gradle-app.setting
+
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.idea
+*.iml
+.eclipse
+.DS_Store
+
+
+
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+npm-debug.log
+tmp
+
+.env

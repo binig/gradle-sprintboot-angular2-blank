@@ -1,0 +1,35 @@
+<event>
+    <type>USER_UNASSIGNMENT</type>
+    <marketplace>
+        <baseUrl>https://acme.appdirect.com</baseUrl>
+        <partner>ACME</partner>
+    </marketplace>
+    <flag>STATELESS</flag>
+    <creator>
+        <email>test-email+creator@appdirect.com</email>
+        <firstName>DummyCreatorFirst</firstName>
+        <language>fr</language>
+        <lastName>DummyCreatorLast</lastName>
+        <openId>
+            https://www.appdirect.com/openid/id/ec5d8eda-5cec-444d-9e30-125b6e4b67e2
+        </openId>
+        <uuid>ec5d8eda-5cec-444d-9e30-125b6e4b67e2</uuid>
+    </creator>
+    <payload>
+        <account>
+            <accountIdentifier>dummy-account</accountIdentifier>
+            <status>ACTIVE</status>
+        </account>
+        <configuration/>
+        <user>
+            <email>test-email@appdirect.com</email>
+            <firstName>DummyFirst</firstName>
+            <language>fr</language>
+            <lastName>DummyLast</lastName>
+            <openId>
+                https://www.appdirect.com/openid/id/ec5d8eda-5cec-444d-9e30-125b6e4b67e2
+            </openId>
+            <uuid>ec5d8eda-5cec-444d-9e30-125b6e4b67e2</uuid>
+        </user>
+    </payload>
+</event>
