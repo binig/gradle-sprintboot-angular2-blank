@@ -83,7 +83,7 @@ war {
 war.dependsOn(":webjs:build")
 
 task initConf() {
-    if (!file('.env').exists())
+    if (!new File(parent.projectDir,'.env').exists())
         copy {
             from("../")
             into("../")
