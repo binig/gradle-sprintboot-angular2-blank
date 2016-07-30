@@ -1,2 +1,2 @@
 #!/bin/sh
-export $(cat .env | xargs)  && java -jar build/libs/$1
+export $(cat §2 | xargs)  && java -jar $1

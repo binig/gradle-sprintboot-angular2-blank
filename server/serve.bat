@@ -1,2 +1,2 @@
-for /F %%g in (.env) do set %%g
-java -jar build/libs/%1
+for /F %%g in (%2) do set %%g
+java -jar %1

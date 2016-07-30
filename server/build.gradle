@@ -78,15 +78,15 @@ war {
     into("WEB-INF/classes/static/") {
         from rootProject.webjsDist
     }
-    archiveName '${example}.war'
+    archiveName "${appName}.war"
 }
 war.dependsOn(":webjs:build")
 
 task initConf() {
     if (!file('.env').exists())
         copy {
-            from(".")
-            into(".")
+            from("../")
+            into("../")
             include(".env.example")
             rename ('.env.example', '.env')
 
@@ -96,9 +96,10 @@ task initConf() {
 task serve(type: Exec, dependsOn: ["build","initConf"]) {
     group = BasePlugin.BUILD_GROUP
     workingDir projectDir
+    executable = new   File(projectDir, Os.isFamily(Os.FAMILY_WINDOWS) ? "serve.bat":"serve.sh")
+    def warFile = new File(projectDir, "build/libs/${appName}.war")
+    def envFile = new File(parent.projectDir, '.env')
+    args = [warFile, envFile]
     description = "start spring boot application"
-    commandLine = [Os.isFamily(Os.FAMILY_WINDOWS) ? "serve.bat":"./serve.sh" , '${example}.war']
-
-
 }
 
